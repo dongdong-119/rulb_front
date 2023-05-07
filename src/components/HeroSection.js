@@ -16,15 +16,15 @@ function HeroSection() {
           buttonStyle='btn--outline'
           buttonSize='btn--large'
           >
-            GET STARTED
+            서비스 설명 보기
           </Button>
           <Button 
           className='btns' 
           buttonStyle='btn--primary'
           buttonSize='btn--large'
           >
-            WATCH TRAILER <i className='far
-            fa-play-circle' />
+            서비스 이용하기 <i className='far
+            fa-solid fa-image' />
           </Button>
       </div>
       </div>
