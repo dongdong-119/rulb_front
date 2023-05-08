@@ -15,7 +15,7 @@ function Cards() {
       </Fade>
       <Fade bottom>
       <br/>
-      <h4>ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ</h4>
+      <h4>ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ</h4>
       <br/>
       <h4>ㅁㅁㅁㅁㅁㅁㅁ</h4>
       <h4>ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ</h4>
@@ -27,7 +27,7 @@ function Cards() {
       <div className='cards__container'>
         <div className='cards__wrapper'>
 
-          <Fade left duration={2400}>
+          <Fade bottom duration={2400}>
             <ul className='cards__items'>
               <CardItem
                 title={["소중한", <br />, "사람들을", <br />, "지워서 지키는 ", <br />, <strong>법 </strong>]}
@@ -38,7 +38,7 @@ function Cards() {
             </ul>
           </Fade>
           
-          <Fade bottom duration={2400}>
+          <Fade top duration={2400}>
             <ul className='cards__items'>
               <CardItem
                 title={["지워서 지키는", <br />, "法"]}
@@ -49,7 +49,7 @@ function Cards() {
             </ul>
           </Fade>
           
-          <Fade bottom>
+          <Fade bottom duration={2400}>
             <ul className='cards__items'>
               <CardItem
                 src='images/img-4.jpg'
@@ -59,7 +59,7 @@ function Cards() {
             </ul>
           </Fade>
 
-          <Fade bottom>
+          <Fade bottom duration={2400}>
             <ul className='cards__items'>
               <CardItem
                 src='images/img-5.jpg'
