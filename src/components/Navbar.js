@@ -1,9 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from './Button';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
+
 function Navbar() {
+
+  // Top으로 이동
+  function moveToTop() {
+    window.scrollTo({
+      top: 0, 
+      behavior: 'smooth', 
+    })
+  }
+
+  // About으로 이동
+  function moveToAbout() {
+    window.scrollTo({
+      top: 1140, 
+      behavior: 'smooth',
+    })
+  }
+
+  // Service로 이동
+  function moveToService() {
+    window.scrollTo({
+      top: 2000, 
+      behavior: 'smooth',
+    })
+  }
+  
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
@@ -28,7 +53,7 @@ function Navbar() {
     <>
       <nav className='navbar'>
         <div className='navbar-container'>
-          <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
+          <Link to='/' className='navbar-logo' onClick={moveToTop}>
             RULB
             {/* <i class="fas fa-regular fa-eraser fa-bounce"/> */}
           </Link>
@@ -36,44 +61,37 @@ function Navbar() {
             <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
           </div>
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-            <li className='nav-item'>
-              <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+            <li className='nav-item' onClick={moveToTop}>
+              <Link to='/' className='nav-links'>
                 Home
               </Link>
             </li>
-            <li className='nav-item'>
+            <li className='nav-item' onClick={moveToAbout}>
               <Link
-                to='/services'
                 className='nav-links'
-                onClick={closeMobileMenu}
               >
                 About
               </Link>
             </li>
-            <li className='nav-item'>
+            <li className='nav-item' onClick={moveToService}>
               <Link
-                to='/products'
                 className='nav-links'
-                onClick={closeMobileMenu}
               >
-<<<<<<< HEAD
-                Products
-              </Link>
-            </li>
-          </ul>
-          {button && <Button buttonStyle='btn--outline'>LANGUAGE</Button>}
-=======
                 Service
               </Link>
             </li>
+            <li className='nav-item'>
+              <Link
+                className='nav-links'
+              > <i className='fa-sharp fa-regular fa-globe' />
+              </Link>              
+            </li>
           </ul>
-          {/* 사용x */}
-          {button && <Button buttonStyle='btn--outline'>Language</Button>}
->>>>>>> 1e7408795736d0713559a1dbe9a446c0409631a8
         </div>
       </nav>
     </>
   );
-}
+
+  }
 
 export default Navbar;

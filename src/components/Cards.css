@@ -17,7 +17,7 @@ h2 {
   display: flex;
   flex-flow: column;
   align-items: center;
-  max-width: 1400px;
+  max-width: 1800px;
   width: 90%;
   margin: 0 auto;
 }
@@ -107,7 +107,7 @@ h2 {
 
 @media only screen and (min-width: 1200px) {
   .content__blog__container {
-    width: 84%;
+    width: 90%;
   }
   
 }

@@ -1,9 +1,18 @@
-import React, { useRef } from 'react'
+import React from 'react';
 import '../App.js';
 import { Button } from './Button';
 import './HeroSection.css';
+import Cards from './Cards.js';
 
 function HeroSection() {
+  
+  function moveTo() {
+    window.scrollTo({
+      top: 1140,
+      behavior: 'smooth'
+    })
+  }
+
 
   return (
     <div className='hero-container'>
@@ -17,16 +26,11 @@ function HeroSection() {
           className='btns' 
           buttonStyle='btn--outline'
           buttonSize='btn--large'
-          onClick={() => {
-            window.scrollTo({
-              top: 1100,
-              behavior: 'smooth',
-            }
-            );
-          }}
+          onClick={moveTo}
           >
             서비스 설명 보기
           </Button>
+
           <Button 
           className='btns' 
           buttonStyle='btn--primary'
@@ -35,6 +39,7 @@ function HeroSection() {
             서비스 이용하기 <i className='far
             fa-solid fa-image' />
           </Button>
+          
       </div>
       </div>
   )
