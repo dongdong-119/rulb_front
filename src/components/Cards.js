@@ -6,7 +6,9 @@ function Cards() {
   return (
     <div className='cards'>
       <h1>지워서 지키는 법</h1>
-      <h2>////</h2>
+      <h2>서비스 설명 추가1</h2>
+      <h2>서비스 설명 추가2</h2>
+    
       <div className='cards__container'>
         <div className='cards__wrapper'>
           <ul className='cards__items'>
