@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import '../App.js';
 import { Button } from './Button';
 import './HeroSection.css';
 
 function HeroSection() {
+
   return (
     <div className='hero-container'>
       <video src='/videos/video-2.mp4' autoPlay loop muted />    
@@ -16,6 +17,13 @@ function HeroSection() {
           className='btns' 
           buttonStyle='btn--outline'
           buttonSize='btn--large'
+          onClick={() => {
+            window.scrollTo({
+              top: 1100,
+              behavior: 'smooth',
+            }
+            );
+          }}
           >
             서비스 설명 보기
           </Button>
