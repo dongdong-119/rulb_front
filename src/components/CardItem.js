@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
 
 function CardItem(props) {
   return (
@@ -7,7 +7,7 @@ function CardItem(props) {
     <>
       <li className='cards__item'>
         <div className='cards__item__info'>
-          <h1>{props.title}</h1>
+          <h2>{props.title}</h2>
           <h5 className='cards__item__text'>{props.text}</h5>
         </div>
         <figure className='cards__item__pic-wrap'>

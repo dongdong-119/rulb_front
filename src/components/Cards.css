@@ -7,16 +7,19 @@ h1 {
   font-size: 71px;
   text-align: center;  
 	font-weight: bolder;
-	background-image: linear-gradient(to left, red, skyblue);
-	background-clip: text;
-	-webkit-background-clip: text;
-	color: transparent;
+  color: black; 
+  background-clip: text;
 }
 
 
 h2 {
-  font-size: 34px;
-  text-align: center;
+  font-size: 71px;
+  text-align: left;  
+	font-weight: bolder;
+	background-image: linear-gradient(to left, red, skyblue);
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
 }
 
 h4 {
