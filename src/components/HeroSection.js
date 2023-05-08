@@ -2,7 +2,6 @@ import React from 'react';
 import '../App.js';
 import { Button } from './Button';
 import './HeroSection.css';
-import Cards from './Cards.js';
 
 function HeroSection() {
   
@@ -12,7 +11,6 @@ function HeroSection() {
       behavior: 'smooth'
     })
   }
-
 
   return (
     <div className='hero-container'>

@@ -83,7 +83,7 @@ function Navbar() {
             <li className='nav-item'>
               <Link
                 className='nav-links'
-              > <i className='fa-sharp fa-regular fa-globe' />
+              > <i className='fas fa-sharp fa-regular fa-globe' />
               </Link>              
             </li>
           </ul>
