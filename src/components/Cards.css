@@ -4,7 +4,12 @@
 }
 
 h1 {
-  font-size: 100px;
+  font-size: 89px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 34px;
   text-align: center;
 }
 
@@ -12,7 +17,7 @@ h1 {
   display: flex;
   flex-flow: column;
   align-items: center;
-  max-width: 1120px;
+  max-width: 1400px;
   width: 90%;
   margin: 0 auto;
 }

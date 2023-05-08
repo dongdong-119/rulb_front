@@ -6,7 +6,7 @@ import './HeroSection.css';
 function HeroSection() {
   return (
     <div className='hero-container'>
-      <video src='/videos/video-2.mp4' autoPlay loop muted />    
+      <video src='/videos/people.mp4' autoPlay loop muted />    
       <h1>RULB</h1>
       <p>딥러닝 기반 얼굴 인식 및 자동 블러처리 서비스</p>
       {/* <p>how to protect my peopole with erasing their face.</p>

@@ -49,6 +49,7 @@
   
   .nav-item {
     height: 80px;
+    justify-content: right;
   }
   
   .nav-links {
