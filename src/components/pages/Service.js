@@ -1,266 +1,228 @@
-import React from "react";
-import './Service.css';
+import React, { useState, useRef } from "react";
+import "./Service.css";
 
-function Service(){
-
-    // let upload_img_box = document.querySelector('.upload_img_box');
-    // let selectedImage = document.querySelector('#selectedImage');
-    // let choose_image = document.querySelector('.choose_image');
-
-    // let image_holder = document.querySelector('.image_holder');
-    // let image = document.querySelector('#image');
-
-    // let slider = document.querySelectorAll('.slider');
-    // let show_value = document.querySelectorAll('.show_value');
-
-    // let list_options = document.querySelectorAll('ul li');
-
-    // let options = document.querySelector('.options');
-    // let option = document.querySelectorAll('.option');
-
-    // let clearAll = document.querySelector('#clearAll');
-    // let remove_img_btn = document.querySelector('#remove_img_btn');
+const filterOptions = [
+  { id: "brightness", name: "Brightness" },
+  { id: "saturation", name: "Saturation" },
+  { id: "inversion", name: "Inversion" },
+  { id: "grayscale", name: "Grayscale" },
+];
 
 
-    // let canvas = document.querySelector('#image_canvas');
-    // const context = canvas.getContext('2d');
+function Service() {
+  const [previewImg, setPreviewImg] = useState(null);
+  const [activeFilter, setActiveFilter] = useState("brightness");
+  const [sliderValue, setSliderValue] = useState(100);
+  const [brightness, setBrightness] = useState("100");
+  const [saturation, setSaturation] = useState("100");
+  const [inversion, setInversion] = useState("0");
+  const [grayscale, setGrayscale] = useState("0");
+  const [rotate, setRotate] = useState(0);
+  const [flipHorizontal, setFlipHorizontal] = useState(1);
+  const [flipVertical, setFlipVertical] = useState(1);
+  const fileInputRef = useRef(null);
+  const previewImgRef = useRef(null);
+  const loadImage = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    setPreviewImg(file);
+    resetFilter();
+  };
 
-    // let File_Name;
-    // let Edited = false;
+  const applyFilter = () => {
+    previewImgRef.current.style.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`;
+    previewImgRef.current.style.transform = `rotate(${rotate}deg) scale(${flipHorizontal}, ${flipVertical})`;
+  };
 
-
-    // /*handle choose image event*/
-    // upload_img_box.addEventListener("click", function () {
-    // selectedImage.click();
-    // });
-
-
-    // /*choose image event*/
-    // selectedImage.addEventListener("change", function () {
-    // const file = this.files[0];
-
-    // if (file) {
-    //     const reader = new FileReader();
-    //     File_Name = file.name;
-
-    //     choose_image.style.display = "none";
-    //     image_holder.style.display = "block";
-
-    //     reader.addEventListener("load", function () {
-    //         image.setAttribute("src", this.result);
-    //     });
-
-    //     reader.readAsDataURL(file);
-    //     remove_img_btn.style.display = "block";
-    // }
-
-    // if (Edited == false) {
-    //     Edited = true;
-    // }
-
-    // })
-
-
-    // /*function call when slider value change*/
-    // for (let i = 0; i <= slider.length - 1; i++) {
-    // slider[i].addEventListener('input', editImage);
-    // }
-
-    // function editImage() {
-    // let bright = document.querySelector('#brightness');
-    // let blur = document.querySelector('#blur');
-    // let grey = document.querySelector('#greyScale');
-    // let hue = document.querySelector('#hue');
-    // let saturation = document.querySelector('#saturation');
+  const resetFilter = () => {
+    setBrightness("100");
+    setSaturation("100");
+    setInversion("0");
+    setGrayscale("0");
+    setRotate(0);
+    setFlipHorizontal(1);
+    setFlipVertical(1);
+    setActiveFilter("brightness");
+    setSliderValue(100);
+  };
 
 
-    // let brightValShow = document.querySelector('#brightVal');
-    // let blurValShow = document.querySelector('#blurVal');
-    // let greyValShow = document.querySelector('#greyVal');
-    // let hueValShow = document.querySelector('#hueVal');
-    // let saturationValShow = document.querySelector('#saturationVal');
+  const saveImage = () => {
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    const image = new Image();
+    image.onload = () => {
+      canvas.width = image.naturalWidth;
+      canvas.height = image.naturalHeight;
 
-    // let brightVal = bright.value;
-    // let greyVal = grey.value;
-    // let blurVal = blur.value;
-    // let hueVal = hue.value;
-    // let satuVal = saturation.value;
+      ctx.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`;
+      ctx.translate(canvas.width / 2, canvas.height / 2);
+      if (rotate !== 0) {
+        ctx.rotate((rotate * Math.PI) / 180);
+      }
+      ctx.scale(flipHorizontal, flipVertical);
+      ctx.drawImage(
+        image,
+        -canvas.width / 2,
+        -canvas.height / 2,
+        canvas.width,
+        canvas.height
+      );
 
-    // brightValShow.innerHTML = brightVal;
-    // blurValShow.innerHTML = blurVal;
-    // greyValShow.innerHTML = greyVal;
-    // hueValShow.innerHTML = hueVal;
-    // saturationValShow.innerHTML = satuVal;
+      const link = document.createElement("a");
+      link.download = "image.jpg";
+      link.href = canvas.toDataURL();
+      link.click();
+    };
 
-    // image.style.filter = 'grayscale(' + greyVal + '%) hue-rotate(' + hueVal + 'deg) brightness(' + brightVal + '%) blur(' + blurVal + 'px) saturate(' + satuVal + ')';
-    // context.filter = 'grayscale(' + greyVal + '%) hue-rotate(' + hueVal + 'deg) brightness(' + brightVal + '%) blur(' + blurVal + 'px) saturate(' + satuVal + ')';
+    image.src = URL.createObjectURL(previewImg);
+  };
 
-    // clearAll.style.transform = 'translateY(0px)';
-    // }
+  const handleFilterClick = (option) => {
+    setActiveFilter(option.id);
 
+    switch (option.id) {
+      case "brightness":
+        setSliderValue(brightness);
+        break;
+      case "saturation":
+        setSliderValue(saturation);
+        break;
+      case "inversion":
+        setSliderValue(inversion);
+        break;
+      default:
+        setSliderValue(grayscale);
+    }
+  };
+  const handleSliderChange = (event) => {
+    setSliderValue(event.target.value);
+    switch (activeFilter) {
+      case "brightness":
+        setBrightness(event.target.value);
+        break;
+      case "saturation":
+        setSaturation(event.target.value);
+        break;
+      case "inversion":
+        setInversion(event.target.value);
+        break;
+      default:
+        setGrayscale(event.target.value);
+    }
+  };
+  const handleRotate = (option) => {
+    if (option === "left") {
+      setRotate(rotate - 90);
+    } else if (option === "right") {
+      setRotate(rotate + 90);
+    } else if (option === "horizontal") {
+      setFlipHorizontal(flipHorizontal === 1 ? -1 : 1);
+    } else {
+      setFlipVertical(flipVertical === 1 ? -1 : 1);
+    }
+  };
 
-    // /*handle each option click even*/
-    // list_options.forEach((list_option, index) => {
-    // list_option.addEventListener('click', function () {
+  return (
+    <div className={`container ${!previewImg ? "disable" : ""}`}>
+      <h1>RULB 서비스 이용하기</h1>
+      <div className="wrapper">
+        <div className="editor-panel">
+          <div className="filter">
+            <label className="title">Filters</label>
 
-
-    //     if (image.getAttribute('src') == "") {
-    //         alert("Choose Image First");
-    //     } else {
-
-    //         options.style.transform = 'translateY(0px)';
-
-    //         if (Edited == true) {
-    //             canvas.height = image.naturalHeight;
-    //             canvas.width = image.naturalWidth;
-
-    //             for (let i = 0; i <= 4; i++) {
-
-    //             if (index != i) {
-    //                 list_options[i].classList.remove("active_option");
-    //                 option[i].classList.remove("active_controller");
-
-    //             } else {
-    //                 this.classList.add("active_option");
-    //                 option[i].classList.add("active_controller");
-    //             }
-    //             }
-
-    //         } else {
-    //             alert("Edit Your Image First");
-    //         }
-
-    //     }
-
-    // })
-    // })
-
-    // /*download image btn click*/
-    // function Download_btn() {
-
-    // if (image.getAttribute('src') != "") {
-
-    //     if (Edited == true) {
-    //         context.drawImage(image, 0, 0, canvas.width, canvas.height);
-    //         var jpegUrl = canvas.toDataURL("image/jpg");
-
-    //         const link = document.createElement("a");
-    //         document.body.appendChild(link);
-
-    //         link.setAttribute("href", jpegUrl);
-    //         link.setAttribute("download", File_Name);
-    //         link.click();
-    //         document.body.removeChild(link);
-    //     }
-    // }}
-
-
-    // /*clear or reset range value*/
-    // clearAll.addEventListener("click", function () {
-    // clearAllRangeValue();
-    // })
-
-    // function clearAllRangeValue() {
-    // image.style.filter = 'none';
-    // context.filter = 'none';
-
-    // for (let i = 0; i <= slider.length - 1; i++) {
-    //     if (i == 0) {
-    //         slider[i].value = '100';
-    //     } else {
-    //         slider[i].value = '0';
-    //     }
-    // }
-
-    // editImage();
-    // clearAll.style.transform = 'translateY(150px)';
-    // }
-
-    // /*remove image btn click*/
-    // remove_img_btn.addEventListener("click", function () {
-    // image.src = "";
-    // this.style.display = "none";
-    // choose_image.style.display = "block";
-    // image_holder.style.display = "none";
-    // options.style.transform = 'translateY(80px)';
-    // clearAllRangeValue();
-    // })
-    return(
-    //     <div class="service">
-    //         <div class="main">
-    //             <div class="Tools">
-    //                 <ul>
-    //                     <li>
-    //                         <i class='bx bxs-brightness-half'></i>
-    //                         <p>BrightNess</p>
-    //                     </li>
-    //                     <li>
-    //                         <i class='bx bxs-brush' ></i>
-    //                         <p>Blur</p>
-    //                     </li>
-    //                     <li>
-    //                         <i class='bx bxs-collection' ></i>
-    //                         <p>GreyScale</p>
-    //                     </li>
-    //                     <li>
-    //                         <i class='bx bxs-color-fill' ></i>
-    //                         <p>Hue Rotate</p>
-    //                     </li>
-    //                     <li>
-    //                         <i class='bx bxs-magic-wand' ></i>
-    //                         <p>Saturation</p>
-    //                     </li>
-    //                     <li onclick="Download_btn()">
-    //                         <i class='bx bx-export' ></i>
-    //                         <p>Export</p>
-    //                     </li>
-    //                 </ul>
-    //             </div>
-    //         <div class="content">
-    //             <p id="logo">Photo Editor</p>
-    //             <div class="choose_image">
-    //                 <div class="upload_img_box">
-    //                     <i class='bx bxs-image-add' ></i>
-    //                     <input type="file" name="selectedImage" id="selectedImage" accept="image/jpeg, image/png"></input>
-    //                     <p id="hint">choose Image from folder</p>
-    //                 </div>
-    //             </div>
-    //             <canvas id="image_canvas"></canvas>
-    //             <div class="image_holder">
-    //                 <button id="remove_img_btn"><i class='bx bxs-message-square-x' ></i></button>
-    //                 <img src="" alt="img" id="image"></img>
-    //             </div>
-    //             <div class="options">
-    //                 <div class="option">
-    //                     <input type="range" max="200" min="0" value="100" id="brightness" class="slider"></input>
-    //                     <p id="brightVal" class="show_value">100</p>
-    //                 </div>
-    //                 <div class="option">
-    //                     <input type="range" max="40" min="0" value="0" id="blur" class="slider"></input>
-    //                     <p id="blurVal" class="show_value">0</p>
-    //                 </div>
-    //                 <div class="option">
-    //                     <input type="range" max="100" min="0" value="0" id="greyScale" class="slider"></input>
-    //                     <p id="greyVal" class="show_value">0</p>
-    //                 </div>
-    //                 <div class="option">
-    //                     <input type="range" max="100" min="0" value="0" id="hue" class="slider"></input>
-    //                     <p id="hueVal" class="show_value">0</p>
-    //                 </div>
-    //                 <div class="option">
-    //                     <input type="range" max="100" min="1" value="1" id="saturation" class="slider"></input>
-    //                     <p id="saturationVal" class="show_value">1</p>
-    //                 </div>
-    //             </div>
-    //             <button id="clearAll"><span>Reset</span><i class='bx bx-reset' ></i></button>
-    //         </div>
-    //     </div>
-    //  </div>
-
-        <div>
-            123
+            <div className="options">
+              {filterOptions.map((option) => (
+                <button
+                  key={option.id}
+                  id={option.id}
+                  className={activeFilter === option.id ? "active" : ""}
+                  onClick={() => handleFilterClick(option)}
+                >
+                  {option.name}
+                </button>
+              ))}
+            </div>
+            <div className="slider">
+              <div className="filter-info">
+                <p className="name">{activeFilter}</p>
+                <p className="value">{`${sliderValue}%`}</p>
+              </div>
+              <input
+                type="range"
+                min="0"
+                max={
+                  activeFilter === "brightness" || activeFilter === "saturation"
+                    ? "200"
+                    : "100"
+                }
+                value={sliderValue}
+                onChange={handleSliderChange}
+              />
+            </div>
+          </div>
+          <div className="rotate">
+            <label className="title">Rotate & Flip</label>
+            <div className="options">
+              <button id="left" onClick={() => handleRotate("left")}>
+                <i className="fa-solid fa-rotate-left"></i>
+              </button>
+              <button id="right" onClick={() => handleRotate("right")}>
+                <i className="fa-solid fa-rotate-right"></i>
+              </button>
+              <button
+                id="horizontal"
+                onClick={() => handleRotate("horizontal")}
+              >
+                <i className="bx bx-reflect-vertical"></i>
+              </button>
+              <button id="vertical" onClick={() => handleRotate("vertical")}>
+                <i className="bx bx-reflect-horizontal"></i>
+              </button>
+            </div>
+          </div>
         </div>
-    )
+
+        
+        <div className="preview-img">
+          {previewImg ? (
+            <img
+              src={URL.createObjectURL(previewImg)}
+              alt="preview"
+              ref={previewImgRef}
+              onLoad={applyFilter}
+            />
+          ) : (
+            <img src="image-placeholder.svg" alt="preview-img" />
+          )}
+        </div>
+      </div>
+      <div className="controls">
+        <button className="reset-filter" onClick={resetFilter}>
+          Reset Filters
+        </button>
+        <div className="row">
+          <input
+            type="file"
+            className="file-input"
+            accept="image/*"
+            hidden
+            ref={fileInputRef}
+            onChange={loadImage}
+          />
+          <button
+            className="choose-img"
+            onClick={() => fileInputRef.current.click()}
+          >
+            Choose Image
+          </button>
+          <button onClick={saveImage} className="save-img">
+            Save Image
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default Service;

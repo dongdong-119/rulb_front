@@ -1,245 +1,172 @@
-@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+/* Import Google font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: 'poppins', sans-serif;
+.container {
+  width: 100%;
+  padding: 100px 200px 35px;
+  background:chartreuse;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  justify-content: center;
+  align-items: center;
 }
 
-.service{
-    height: 500px;
-	width: 100%;
-    background: #212529;
-    display: flex;
-    justify-content: center;
+.container.disable .editor-panel,
+.container.disable .controls .reset-filter,
+.container.disable .controls .save-img {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.container h2 {
+  margin-top: -8px;
+  font-size: 22px;
+  font-weight: 500;
+}
+.container .wrapper {
+  display: flex;
+  margin: 20px 0;
+  min-height: 335px;
+}
+.wrapper .editor-panel {
+  padding: 15px 20px;
+  width: 30%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.editor-panel .title {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+.editor-panel .options,
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.editor-panel button {
+  outline: none;
+  height: 40px;
+  font-size: 14px;
+  color: #6c757d;
+  background: #fff;
+  border-radius: 3px;
+  margin-bottom: 8px;
+  border: 1px solid #aaa;
+}
+.editor-panel .filter button {
+  width: calc(100% / 2 - 4px);
+}
+.editor-panel button:hover {
+  background: #f5f5f5;
+}
+.filter button.active {
+  color: #fff;
+  border-color: dimgray;
+  background: dimgray;
+}
+.filter .slider {
+  margin-top: 12px;
+}
+.filter .slider .filter-info {
+  display: flex;
+  color: #464646;
+  font-size: 14px;
+  justify-content: space-between;
+}
+.filter .slider input {
+  width: 100%;
+  height: 5px;
+  accent-color: black;
+}
+.editor-panel .rotate {
+  margin-top: 17px;
+}
+.editor-panel .rotate button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% / 4 - 3px);
+}
+.rotate .options button:nth-child(3),
+.rotate .options button:nth-child(4) {
+  font-size: 18px;
+}
+.rotate .options button:active {
+  color: #fff;
+  background: grey;
+  border-color: grey;
+}
+.wrapper .preview-img {
+  flex-grow: 1;
+  display: flex;
+  overflow: hidden;
+  margin-left: 20px;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+}
+.preview-img img {
+  width: 50%;
+  max-height: 335px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.controls button {
+  padding: 11px 20px;
+  font-size: 14px;
+  border-radius: 3px;
+  outline: none;
+  color: #fff;
+  cursor: pointer;
+  background: none;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+.controls .reset-filter {
+  color: #6c757d;
+  border: 1px solid #6c757d;
+}
+.controls .reset-filter:hover {
+  color: #fff;
+  background: #6c757d;
+}
+.controls .choose-img {
+  background: #6c757d;
+  border: 1px solid #6c757d;
+}
+.controls .save-img {
+  margin-left: 5px;
+  background: #f4367d;
+  border: 1px solid #f4367d;
 }
 
-.main {
-	width: 900px;
-	display: flex;
-	border-radius: 10px;
-	background: rgba(255, 255, 255, 0.05);
-	overflow: hidden;
-	box-shadow: 0.1px 4px 8px 5px rgba(0, 0, 0, 0.1);
-    /* background: #17202A; */
-    background: #343a40;
+@media screen and (max-width: 760px) {
+  .container {
+    padding: 25px;
+  }
+  .container .wrapper {
+    flex-wrap: wrap-reverse;
+  }
+  .wrapper .editor-panel {
+    width: 100%;
+  }
+  .wrapper .preview-img {
+    width: 100%;
+    margin: 0 0 15px;
+  }
 }
 
-
-/* Tools part */
-.Tools {
-	height: 100%;
-	width: 10%;
-	box-shadow: 0.1px 4px 8px 5px rgba(0, 0, 0, 0.1);
-	background: rgba(255, 255, 255, 0.05);
-}
-
-.Tools ul {
-	list-style: none;
-}
-
-.Tools ul li {
-	width: 100%;
-	height: 80px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	cursor: pointer;
-	transition: 0.4s;
-}
-
-.Tools ul .active_option {
-	background: rgba(255, 255, 255, 0.1);
-}
-
-.Tools ul .active_option p {
-	opacity: 1;
-	margin-top: 8px;
-}
-
-.Tools ul .active_option i {
-	color: #FF7043;
-}
-
-.Tools ul li i {
-	color: rgba(255, 255, 255, 0.5);
-	margin-top: 10px;
-	font-size: 2em;
-}
-
-.Tools ul li:hover i {
-	color: #FF7043;
-}
-
-.Tools ul li:hover {
-	background: rgba(255, 255, 255, 0.1);
-}
-
-.Tools ul li:hover p {
-	opacity: 1;
-	margin-top: 8px;
-}
-
-.Tools ul li p {
-	opacity: 0;
-	font-size: 13px;
-	color: rgba(255, 255, 255, 0.5);
-}
-
-
-/*content part */
-.content {
-	position: relative;
-	width: 90%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	padding: 20px;
-}
-
-.content #logo {
-	position: absolute;
-	top: 10px;
-	right: 20px;
-	letter-spacing: 3px;
-	font-family: 'Staatliches', cursive;
-	color: rgba(255, 255, 255, 0.5);
-}
-
-.choose_image {
-	width: 70%;
-	height: 200px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-
-.upload_img_box {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	height: 100%;
-	width: 100%;
-	cursor: pointer;
-	border: 1px dashed rgba(255, 255, 255, 0.5);
-}
-
-p#hint {
-	color: rgba(255, 255, 255, 0.5);
-	font-size: 1.2em;
-}
-
-.upload_img_box i {
-	font-size: 2.2em;
-	color: rgba(255, 255, 255, 0.5);
-}
-
-#selectedImage {
-	display: none;
-}
-
-
-/*canvas */
-#image_canvas {
-	display: none;
-}
-
-
-/*image holder part*/
-.image_holder {
-	position: relative;
-	display: none;
-	width: 100%;
-	height: 80%;
-}
-
-.image_holder img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	border-radius: 15px;
-}
-
-.image_holder button {
-	position: absolute;
-	display: none;
-	top: -30px;
-	left: 0px;
-	outline: none;
-	border: none;
-	cursor: pointer;
-	color: #FF7043;
-	font-size: 1.8em;
-	background: none;
-	transform: rotate(270deg);
-}
-
-
-/*options part */
-.options {
-	position: absolute;
-	transform: translateY(80px);
-	bottom: 0;
-	height: 50px;
-	width: 50%;
-	padding: 0 25px;
-	border-radius: 10px 10px 0 0;
-	transition: 0.5s;
-	box-shadow: 0.1px 4px 8px 5px rgba(0, 0, 0, 0.1);
-	background: rgba(255, 255, 255, 0.05);
-}
-
-.options .active_controller {
-	display: flex;
-	align-items: center;
-	width: 100%;
-	height: 100%;
-	justify-content: space-between;
-}
-
-.option {
-	display: none;
-}
-
-.option p {
-	font-weight: bold;
-	color: rgba(255, 255, 255, 0.5);
-}
-
-/*Range slider*/
-input[type="range"] {
-	width: 80%;
-	height: 5px;
-	cursor: pointer;
-	outline: none;
-}
-
-
-/*clear or reset btn */
-#clearAll {
-	position: absolute;
-	bottom: 10px;
-	right: 20px;
-	outline: none;
-	border: none;
-	cursor: pointer;
-	border-radius: 5px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	transition: 0.5s;
-	padding: 10px;
-	color: #17202A;
-	background: #FF7043;
-	transform: translateX(150px);
-	box-shadow: 0.1px 4px 8px 5px rgba(0, 0, 0, 0.1);
-}
-
-#clearAll span {
-	margin-right: 10px;
+@media screen and (max-width: 500px) {
+  .controls button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .controls .row {
+    width: 100%;
+  }
+  .controls .row .save-img {
+    margin-left: 0px;
+  }
 }
