@@ -7,7 +7,7 @@ function HeroSection() {
   
   function moveTo() {
     window.scrollTo({
-      top: 1140,
+      top: 1120,
       behavior: 'smooth'
     })
   }

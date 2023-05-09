@@ -7,7 +7,6 @@ import Home from './components/pages/Home';
 function App() {
   
   return (
-
     <BrowserRouter>
       <Navbar />
       <Routes>

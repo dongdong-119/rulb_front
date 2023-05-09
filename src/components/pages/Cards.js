@@ -10,7 +10,7 @@ function Cards() {
     <div className='cards'>
       
       <Fade bottom>
-      <h1>지워서 지키는 법</h1>
+      <h1><del>지워서</del> 지키는 법</h1>
       </Fade>
       <Fade bottom>
       <br/>
@@ -30,8 +30,8 @@ function Cards() {
             <ul className='cards__items' style={{fontSize: '55px', textAlign: 'left', fontWeight: 'bolder', backgroundImage: 'linear-gradient(40deg, rgba(2,0,36,1) 0%, rgba(333,9,94,1) 39%, rgba(0,212,255,1) 100%)', backgroundClip: 'text', color: 'transparent', WebkitBackgroundClip: 'text'}}>
               <CardItem
                 title={["소중한", <br />, "사람들을", <br />, "지워서", <br />, "지키는 법" ]}
-                src='images/img-9.jpg'
-                text={['RULB는 소중한 사람들을 지키는', <br />, '새로운 방법을 소개합니다.', <br />, '남기기보다, ---']}
+                src='images/NEW.jpg'
+                text={['RULB는 소중한 사람들을 지키는', <br />, '새로운 방법을 소개합니다.']}
               />
             </ul>
           </Fade>
