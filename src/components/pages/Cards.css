@@ -11,21 +11,10 @@ h1 {
   background-clip: text;
 }
 
-
-/* h2 {
-  font-size: 71px;
-  text-align: left;  
-	font-weight: bolder;
-	background-image: linear-gradient(to left, red, skyblue);
-	background-clip: text;
-	-webkit-background-clip: text;
-	color: transparent;
-} */
-
 h4 {
   font-size: 30px;
   justify-content: center;
-} 
+}
 
 .cards__container {
   display: flex;
@@ -47,7 +36,6 @@ h4 {
   width: 1000px;
   padding-top: 250px; 
 }
-
 
 .cards__item {
   display: flex;
@@ -113,32 +101,31 @@ h4 {
   transform: scale(1.1);
 }
 
+/* ABOUT */
 .cards__item__info {
   padding: 0px 20px 30px;
   width: 87%;
 }
 
+/* TITLE */
 .cards__item__info > h1 {
   text-align: left;
 }
 
-.cards__item__info > h5 {
-  text-align: left;
-  font-size: 30px;
-  padding-top: 100px;
-}
-
+/* TEXT */
 .cards__item__text {
-  color: #252e48;
-  font-size: 18px;
-  line-height: 24px;
+  text-align:right;
+  font-size: 23px;
+  padding-top: 70px;
+  line-height: 1.7;
+  color:#2F4F4F;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
 @media only screen and (min-width: 1200px) {
   .content__blog__container {
     width: 90%;
   }
-  
 }
 
 @media only screen and (min-width: 1024px) {

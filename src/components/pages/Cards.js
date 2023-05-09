@@ -31,7 +31,7 @@ function Cards() {
               <CardItem
                 title={["소중한", <br />, "사람들을", <br />, "지워서", <br />, "지키는 법" ]}
                 src='images/img-9.jpg'
-                text='서비스 간단 설명 - 1'
+                text={['RULB는 소중한 사람들을 지키는', <br />, '새로운 방법을 소개합니다.', <br />, '남기기보다, ---']}
               />
             </ul>
           </Fade>
@@ -41,7 +41,7 @@ function Cards() {
               <CardItem
                 title={["지워서", <br />, "{지키는}", <br />, "法"]}
                 src='images/img-2.jpg'
-                text='서비스 간단 설명 - 2'
+                text={['내가 나온 사진이 무단으로 게시되었다면,', <br />, '블러 처리 후 교체 요청을 해보세요.', <br />, 'RULB가 진행 상황을 알려드립니다']}
                 path='/services'
               />
             </ul>
@@ -52,7 +52,7 @@ function Cards() {
               <CardItem
                 title={["초상권 침해", <br />, "걱정을", <br />, "지울 수 있는", <br />, "방법까지"]}
                 src='images/img-4.jpg'
-                text='DESCRIPTION 2'
+                text={['내가 나온 사진이 무단으로 게시되었다면,', <br />, '블러 처리 후 교체 요청을 해보세요.', <br />, 'RULB가 진행 상황을 알려드립니다']}
                 path='/services'
               />
             </ul>
