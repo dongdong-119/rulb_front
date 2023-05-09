@@ -129,7 +129,7 @@ function Service() {
       <div className="wrapper">
         <div className="editor-panel">
           <div className="filter">
-            <label className="title">Filters</label>
+            <label className="title"><strong>필터 종류</strong></label>
 
             <div className="options">
               {filterOptions.map((option) => (
@@ -141,7 +141,7 @@ function Service() {
                 >
                   {option.name}
                 </button>
-              ))}
+              ))}///////////////
             </div>
             <div className="slider">
               <div className="filter-info">
@@ -162,7 +162,7 @@ function Service() {
             </div>
           </div>
           <div className="rotate">
-            <label className="title">Rotate & Flip</label>
+            <label className="title">회전/반전</label>
             <div className="options">
               <button id="left" onClick={() => handleRotate("left")}>
                 <i className="fa-solid fa-rotate-left"></i>
@@ -183,7 +183,7 @@ function Service() {
           </div>
         </div>
 
-        
+
         <div className="preview-img">
           {previewImg ? (
             <img
@@ -199,7 +199,7 @@ function Service() {
       </div>
       <div className="controls">
         <button className="reset-filter" onClick={resetFilter}>
-          Reset Filters
+          필터 초기화
         </button>
         <div className="row">
           <input
@@ -214,10 +214,10 @@ function Service() {
             className="choose-img"
             onClick={() => fileInputRef.current.click()}
           >
-            Choose Image
+            사진 선택
           </button>
           <button onClick={saveImage} className="save-img">
-            Save Image
+            이미지 저장
           </button>
         </div>
       </div>
