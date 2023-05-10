@@ -141,7 +141,7 @@ function Service() {
                 >
                   {option.name}
                 </button>
-              ))}///////////////
+              ))}
             </div>
             <div className="slider">
               <div className="filter-info">
