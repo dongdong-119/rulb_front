@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import "./Service.css";
+import BlurImage from "../BlurImage";
 
 const filterOptions = [
   { id: "brightness", name: "Brightness" },
@@ -7,7 +8,6 @@ const filterOptions = [
   { id: "inversion", name: "Inversion" },
   { id: "grayscale", name: "Grayscale" },
 ];
-
 
 function Service() {
   const [previewImg, setPreviewImg] = useState(null);
@@ -20,11 +20,18 @@ function Service() {
   const [rotate, setRotate] = useState(0);
   const [flipHorizontal, setFlipHorizontal] = useState(1);
   const [flipVertical, setFlipVertical] = useState(1);
+  
   const fileInputRef = useRef(null);
   const previewImgRef = useRef(null);
+  
   const loadImage = (e) => {
+    
     const file = e.target.files[0];
+
+    // 파일 없으면 return
     if (!file) return;
+
+    // PreviewImg에 file 넣음
     setPreviewImg(file);
     resetFilter();
   };
@@ -46,7 +53,7 @@ function Service() {
     setSliderValue(100);
   };
 
-
+  // 이미지 저장 
   const saveImage = () => {
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
@@ -161,6 +168,7 @@ function Service() {
               />
             </div>
           </div>
+
           <div className="rotate">
             <label className="title">회전/반전</label>
             <div className="options">
@@ -183,24 +191,32 @@ function Service() {
           </div>
         </div>
 
-
+        {/* [이미지 프리뷰]
+          - 이미지 있으면 -> 보여주고,
+          - 없으면 -> alt  */}
         <div className="preview-img">
-          {previewImg ? (
-            <img
+          {previewImg ? 
+            (
+              <img
               src={URL.createObjectURL(previewImg)}
               alt="preview"
               ref={previewImgRef}
               onLoad={applyFilter}
             />
           ) : (
-            <img src="image-placeholder.svg" alt="preview-img" />
+            <img src={'public/images/img-3.jpg'} alt="preview-img" />
           )}
         </div>
       </div>
+      
+
+      {/* 편집 박스  */}
       <div className="controls">
+    
         <button className="reset-filter" onClick={resetFilter}>
           필터 초기화
         </button>
+
         <div className="row">
           <input
             type="file"
@@ -216,6 +232,7 @@ function Service() {
           >
             사진 선택
           </button>
+          
           <button onClick={saveImage} className="save-img">
             이미지 저장
           </button>
