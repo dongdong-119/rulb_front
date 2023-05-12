@@ -16,7 +16,7 @@ function Navbar() {
   // About으로 이동
   function moveToAbout() {
     window.scrollTo({
-      top: 1140, 
+      top: 1179, 
       behavior: 'smooth',
     })
   }
@@ -24,7 +24,7 @@ function Navbar() {
   // Service로 이동
   function moveToService() {
     window.scrollTo({
-      top: 2000, 
+      top: 4370, 
       behavior: 'smooth',
     })
   }

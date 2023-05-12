@@ -63,7 +63,40 @@ canvas {
   cursor: pointer;
   font-weight: 500;
   margin-right: 20px;
+  margin-left: 20px; 
 } 
+
+
+.file-input {
+    align-items: center;
+  background-color: #5B42F3;
+  border: 0;
+  border-radius: 8px;
+  color: #FFFFFF;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  font-size: 20px;
+  justify-content: center;
+  line-height: 1em;
+  height: 40px; 
+  /* max-width: 70px;  */
+  min-width: 140px;
+  padding: 3px;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 500;
+  margin-right: 20px;
+}
+
+#file-input {
+    display: none; 
+}
+.buttons input[type='file'] {
+    color: yellow;
+    width: 400px;
+    text-align: center;
+    
+}
 
 
 .btn-download {

@@ -2,8 +2,15 @@ import React, { useEffect, useRef } from 'react';
 
 function BlurImage({src, regions}) {
   const canvasRef = useRef(null);
-  
-  const points = (!regions) ? []:regions; 
+  let points = []; 
+
+  console.log('regions : ', regions); 
+
+  if(!!regions) {
+    regions.forEach((region) => region['status'] = true); 
+    points = regions; 
+  }
+
   
   const image = new Image();
   image.src = src; 
@@ -20,6 +27,7 @@ function BlurImage({src, regions}) {
       const context = canvas.getContext('2d');
       context.drawImage(image, 0, 0);
       
+
       // initial blur
       points.forEach((point) => {
         const blurRadius = 9;

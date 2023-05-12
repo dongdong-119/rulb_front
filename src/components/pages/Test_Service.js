@@ -13,6 +13,7 @@ function Test_Service() {
 
     const handleFileChange = (event) => {
         setSelectedFile(event.target.files[0]); 
+
     }
 
     // 이미지 업로드 -> 파일 없으면 alert 
@@ -83,26 +84,30 @@ function Test_Service() {
                 </div>
 
                 <div className="buttons">
+                    <label for='file-input'>
+                        <div className="file-input">파일 선택하기</div>
+                    </label>
                     <input
                         type='file'
                         className='file-input'
+                        id='file-input'
                         accept='image/*'
                         // hidden
                         ref={fileInputRef}
-                        onChange={handleFileChange} />
+                        onChange={handleFileChange}
+                        />
+                        
                     <button
                         className="choose-img btn-upload"
-                        onClick={uploadImage}>사진 선택</button>
+                        onClick={uploadImage}>업로드</button>
                 
                     <a id="download">
-                      <button type='button' className="btn-download" onClick={saveAsPNG}>Download</button>
+                      <button type='button' className="btn-download" onClick={saveAsPNG}>다운로드</button>
                     </a>
                 </div>
-    
-                
             </div>
         </div> // service-container 끝
     ) 
 }
 
-export default Test_Service; 
+export default Test_Service;

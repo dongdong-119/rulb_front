@@ -7,21 +7,21 @@ function HeroSection() {
   
   function moveToAbount() {
     window.scrollTo({
-      top: 1080,
+      top: 1179,
       behavior: 'smooth'
     })
   }
 
   function moveToService() {
     window.scrollTo({
-      top: 4620,
+      top: 4370,
       behavior: 'smooth'
     })
   }
 
   return (
     <div className='hero-container'>
-      <video src='/videos/people.mp4' autoPlay loop muted />    
+      <video src='/videos/main_2.mp4' autoPlay loop muted />    
       <h1>RULB</h1>
       
       {/* <p>how to protect my peopole with erasing their face.</p>

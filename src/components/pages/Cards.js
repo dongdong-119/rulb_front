@@ -25,7 +25,7 @@ function Cards() {
             <ul className='cards__items' style={{fontSize: '55px', textAlign: 'left', fontWeight: 'bolder', backgroundImage: 'linear-gradient(660deg, rgba(2,0,36,1) 0%, rgba(43,73,80,1) 26%, rgba(67,94,120,1) 45%, rgba(51,70,128,1) 56%, rgba(79,108,154,1) 68%, rgba(0,212,255,1) 82%)', backgroundClip: 'text', color: 'transparent', WebkitBackgroundClip: 'text'}}>
               <CardItem
                 title={["지워서", <br />, "{지키는}", <br />, "法"]}
-                src='images/토끼2.png'
+                src='/images/rabbit.png'
                 text={['늘어가는 개인 초상권 침해*', <br />, '우리 모두의 권리를 지키는 데에는', <br />, 'RULB와 클릭 몇 번이면 충분합니다. ']}
                 addition_text={['* 초상권 침해관련 피해 신고 건수 2014년 대비 2018년 약 100% 증가', <br />, '자료출처: 방송통신심의위원회']}
               />
