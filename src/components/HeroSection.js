@@ -5,9 +5,16 @@ import './HeroSection.css';
 
 function HeroSection() {
   
-  function moveTo() {
+  function moveToAbount() {
     window.scrollTo({
-      top: 1120,
+      top: 1080,
+      behavior: 'smooth'
+    })
+  }
+
+  function moveToService() {
+    window.scrollTo({
+      top: 4620,
       behavior: 'smooth'
     })
   }
@@ -16,15 +23,16 @@ function HeroSection() {
     <div className='hero-container'>
       <video src='/videos/people.mp4' autoPlay loop muted />    
       <h1>RULB</h1>
-      <p>딥러닝 기반 얼굴 인식 및 자동 블러처리 서비스</p>
+      
       {/* <p>how to protect my peopole with erasing their face.</p>
       <p>And how to observe the law with erasing</p> */}
+      <p>딥러닝 기반 얼굴 인식 및 자동 블러처리 서비스</p>
       <div className='hero-btns'>
         <Button 
           className='btns' 
           buttonStyle='btn--outline'
           buttonSize='btn--large'
-          onClick={moveTo}
+          onClick={moveToAbount}
           >
             서비스 설명 보기
           </Button>
@@ -33,6 +41,7 @@ function HeroSection() {
           className='btns' 
           buttonStyle='btn--primary'
           buttonSize='btn--large'
+          onClick={moveToService}
           >
             서비스 이용하기 <i className='far
             fa-solid fa-image' />

@@ -2,7 +2,9 @@ import React, { useEffect, useRef } from 'react';
 
 function BlurImage({src, regions}) {
   const canvasRef = useRef(null);
-  const points = regions;
+  
+  const points = (!regions) ? []:regions; 
+  
   const image = new Image();
   image.src = src; 
   image.crossOrigin = 'anonymous';
@@ -20,7 +22,7 @@ function BlurImage({src, regions}) {
       
       // initial blur
       points.forEach((point) => {
-        const blurRadius = 7;
+        const blurRadius = 9;
         const { x, y, width, height, status } = point;
         if (status) {
           context.filter = `blur(${blurRadius}px)`;
@@ -28,6 +30,8 @@ function BlurImage({src, regions}) {
         }
       })
 
+      console.log('초기 블러 완료')
+      
       // remove blur on click
       canvas.addEventListener('click', (e) => {
         const x = e.offsetX;
@@ -62,7 +66,7 @@ function BlurImage({src, regions}) {
 
       // 블러처리
       points.forEach((point) => {
-        const blurRadius = 7;
+        const blurRadius = 9;
         const { x, y, width, height, status } = point;
         
         // status -> true일 때에만 blur 처리함 

@@ -14,12 +14,10 @@
 
 .title > h1 {
     padding-bottom: 50px;
-    font-size: 71px; 
-    
+    font-size: 71px;    
 }
 
 .title > h3 {
-    
     
 }
 
@@ -36,7 +34,6 @@
 canvas {
     display: inline;
 }
-
 
 
 /* 버튼 */ 

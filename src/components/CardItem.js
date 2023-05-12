@@ -9,6 +9,7 @@ function CardItem(props) {
         <div className='cards__item__info'>
           <h2 style={props.style}>{props.title}</h2>
           <h5 className='cards__item__text'>{props.text}</h5>
+          <p>{props.addition_text}</p>
         </div>
         <figure className='cards__item__pic-wrap'>
           <img
