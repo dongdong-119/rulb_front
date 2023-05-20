@@ -81,6 +81,7 @@ function Test_Service() {
                     // 들어가 있는 regions데이터는 예시
                     regions={data}
                     /> {/* BlurImage 끝*/}
+
                 </div>
 
                 <div className="buttons">
