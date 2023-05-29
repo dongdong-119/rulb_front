@@ -1,4 +1,5 @@
-# Getting Started with Create React App
+# RULB - Automatic Face Recognition and Blur Processing Service Based on Deep Learning
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
